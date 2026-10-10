@@ -1,0 +1,40 @@
+# Reference environment: Python 3.10, Linux, NVIDIA GPU, CUDA Toolkit 12.1.
+# Install the CUDA PyTorch wheels first; see README.md.
+# selective_scan_cuda_oflex is a compiled extension installed separately.
+
+# PyTorch / model
+torch==2.4.1
+torchvision==0.19.1
+timm==0.9.16
+einops==0.8.0
+fvcore==0.1.5.post20221221
+iopath==0.1.10
+yacs==0.1.8
+termcolor==2.4.0
+huggingface-hub==0.24.7
+safetensors==0.4.5
+
+# Data loading / patch splitting / evaluation
+numpy==1.26.4
+Pillow==9.5.0
+albumentations==1.3.1
+opencv-python-headless==4.10.0.84
+scipy==1.11.4
+scikit-image==0.22.0
+scikit-learn==1.3.2
+qudida==0.0.4
+ttach==0.0.3
+tqdm==4.66.5
+addict==2.4.0
+PyYAML==6.0.2
+
+# CUDA build helpers; nvcc / C++ compiler are system dependencies
+packaging==24.1
+setuptools==75.1.0
+wheel==0.44.0
+ninja==1.11.1.1
+
+# Legacy utilities / change-detection code retained in the repository
+torchmetrics==0.9.3
+wandb==0.16.6
+ipdb==0.13.13
