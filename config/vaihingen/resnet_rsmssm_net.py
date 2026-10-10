@@ -20,7 +20,7 @@ import torch
 from torch.utils.data import DataLoader
 from utils.losses import JointLoss, SoftBCEWithLogitsLoss, DiceLoss
 from utils.data_loading import BasicDataset
-from resnet_rsmssm_net import MCFFENet
+from resnet_rsmssm import MCFFENet
 
 # ── Dataset ──
 CLASSES = ('ImSurf', 'Building', 'LowVeg', 'Tree', 'Car', 'Clutter')
