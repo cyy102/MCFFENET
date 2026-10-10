@@ -17,7 +17,7 @@ import torch
 from torch.utils.data import DataLoader
 from utils.losses import JointLoss, SoftBCEWithLogitsLoss, DiceLoss
 from utils.data_loading import BasicDataset
-from afenet_rsmssm_ada_net import MCFFENet
+from afenet_rsmssm import MCFFENet
 
 # ── Dataset ──
 CLASSES = ('Impervious', 'Building', 'LowVeg', 'Tree', 'Car', 'Clutter')
