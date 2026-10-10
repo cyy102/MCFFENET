@@ -1,0 +1,44 @@
+import sys
+from importlib import import_module
+from pathlib import Path
+from typing import Union
+
+try:
+    from addict import Dict
+except ImportError:
+    Dict = dict
+
+
+class ConfigDict(Dict if Dict != dict else dict):
+    def __missing__(self, name):
+        raise KeyError(name)
+
+    def __getattr__(self, name):
+        try:
+            value = super().__getattr__(name)
+        except (KeyError, AttributeError):
+            ex = AttributeError(f"'{self.__class__.__name__}' object has no attribute '{name}'")
+            raise ex
+        return value
+
+
+def py2dict(file_path: Union[str, Path]) -> dict:
+    file_path = Path(file_path).absolute()
+    if file_path.suffix != ".py":
+        raise TypeError(f"Only Py file can be parsed, but got {file_path.name} instead.")
+    if not file_path.exists():
+        raise FileExistsError(f"There is no file at the path {file_path}")
+    module_name = file_path.stem
+    if "." in module_name:
+        raise ValueError("Dots are not allowed in config file path.")
+    config_dir = str(file_path.parent)
+    sys.path.insert(0, config_dir)
+    mod = import_module(module_name)
+    sys.path.pop(0)
+    cfg_dict = {name: value for name, value in mod.__dict__.items() if not name.startswith("__")}
+    return cfg_dict
+
+
+def py2cfg(file_path: Union[str, Path]) -> ConfigDict:
+    cfg_dict = py2dict(file_path)
+    return ConfigDict(cfg_dict)
