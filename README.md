@@ -94,14 +94,6 @@ git -C external/VMamba rev-parse HEAD
 
 Record the source revision printed by the last command for reproducibility. Installing `mamba-ssm` alone does not provide the oflex extension required by this model.
 
-Verify the Python dependencies and model import:
-
-```bash
-python -m pip check
-cd MCFFENet
-python -c "import torch, timm, albumentations, cv2, einops, fvcore, ttach; from resnet_rsmssm import MCFFENet; print('Imports: OK')"
-```
-
 Configurations use `pretrained=True`. The first model construction may download SWSL-ResNet18 weights. Prepare the weight cache in advance for offline training.
 
 ## Datasets
