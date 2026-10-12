@@ -39,7 +39,7 @@ val_split = 'train'  # no separate val set, use train dir
 test_split = 'eroded_test'
 
 # ── Training params ──
-max_epoch = 120
+max_epoch = 100
 train_batch_size = 8
 val_batch_size = 8
 lr = 1e-3
