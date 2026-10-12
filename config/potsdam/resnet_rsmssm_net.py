@@ -36,7 +36,7 @@ val_split = 'val'
 test_split = 'test'
 
 # ── Training params ──
-max_epoch = 120
+max_epoch = 100
 train_batch_size = 8
 val_batch_size = 8
 lr = 1e-3
